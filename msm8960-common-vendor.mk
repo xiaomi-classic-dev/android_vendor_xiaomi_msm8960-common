@@ -130,3 +130,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libqminvapi \
     TimeService
+
+# Android 15 loads same-partition JNI libraries through the vendor namespace.
+# Non-Treble devices do not export that namespace, so keep the TimeService JNI
+# dependency chain in the APK's class-loader search path instead.
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/msm8960-common/proprietary/vendor/lib/libTimeService.so:$(TARGET_COPY_OUT_VENDOR)/app/TimeService/lib/arm/libTimeService.so \
+    vendor/xiaomi/msm8960-common/proprietary/vendor/lib/libtime_genoff.so:$(TARGET_COPY_OUT_VENDOR)/app/TimeService/lib/arm/libtime_genoff.so
