@@ -42,7 +42,7 @@ android_app_import {
 	apk: "proprietary/vendor/app/TimeService/TimeService.apk",
 	certificate: "platform",
 	dex_preopt: {
-		enabled: false,
+		enabled: true,
 	},
 	soc_specific: true,
 }
